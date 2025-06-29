@@ -34,12 +34,7 @@ public class UserServiceImp implements UserService {
    @Transactional
    @Override
    public User getUserByCar(String model, int series) {
-      String hql = "FROM User u WHERE u.car.model = :model AND u.car.series = :series";
-      return (User) sessionFactory.getCurrentSession()
-              .createQuery(hql)
-              .setParameter("model", model)
-              .setParameter("series", series)
-              .uniqueResult();
+      return userDao.getUserByCar(model, series);
    }
 
 
